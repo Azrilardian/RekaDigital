@@ -1,0 +1,56 @@
+@import 'tailwindcss';
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --dark-blue: #1e293b;
+  --dark-blue-darker: #1e3a5f;
+  --light-gray: #ffffffe5;
+  --pale-gray: #e5e7eb;
+  --yellow: #fbbf24;
+  --slate-blue: #64748b;
+  --surface: #f8f9fa;
+  --border-muted: #cbd5e1;
+  --ring: #93c5fd;
+  --ring-offset: #ffffff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --color-dark-blue: var(--dark-blue);
+  --color-dark-blue-darker: var(--dark-blue-darker);
+  --color-light-gray: var(--light-gray);
+  --color-pale-gray: var(--pale-gray);
+  --color-yellow: var(--yellow);
+  --color-slate-blue: var(--slate-blue);
+  --color-surface: var(--surface);
+  --color-border-muted: var(--border-muted);
+  --color-ring: var(--ring);
+  --color-ring-offset: var(--ring-offset);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+* {
+  scroll-behavior: smooth;
+}
