@@ -1,7 +1,9 @@
 'use client'
 
 import { useEffect } from 'react'
+
 import Link from 'next/link'
+
 import { Button } from '@/components/ui/button'
 
 export default function Error({
@@ -22,7 +24,7 @@ export default function Error({
           Something went wrong!
         </h2>
         <p className='text-slate-blue mb-6 text-sm'>
-          {error.message || 'An unexpected error occurred. Please try again.'}
+          {error?.message ?? 'An unexpected error occurred'}
         </p>
         <div className='flex justify-center gap-3'>
           <Button

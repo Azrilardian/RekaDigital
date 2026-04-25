@@ -1,6 +1,8 @@
-import Link from 'next/link'
 import { ChevronRight } from 'lucide-react'
+import Link from 'next/link'
+
 import ProductCard from '@/components/ProductCard'
+
 import type { RelatedProductsProps } from './types'
 
 export default function RelatedProducts(props: RelatedProductsProps) {

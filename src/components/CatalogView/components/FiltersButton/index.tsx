@@ -1,6 +1,7 @@
 'use client'
 
 import { Funnel } from 'lucide-react'
+
 import type { FiltersButtonProps } from './types'
 
 export default function FiltersButton(props: FiltersButtonProps) {

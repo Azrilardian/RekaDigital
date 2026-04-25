@@ -1,4 +1,5 @@
 import type { CartItem } from '@/types'
+
 import type { CartTotals } from './types'
 
 export function calculateCartTotals(items: CartItem[]): CartTotals {

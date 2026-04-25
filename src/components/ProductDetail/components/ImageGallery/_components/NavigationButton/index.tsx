@@ -1,6 +1,8 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import type { NavigationButtonProps } from './types'
+
 import { Button } from '@/components/ui/button'
+
+import type { NavigationButtonProps } from './types'
 
 export default function NavigationButton(props: NavigationButtonProps) {
   const { direction, onClick } = props

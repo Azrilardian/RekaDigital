@@ -1,5 +1,6 @@
-import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
+import Link from 'next/link'
+
 import type { CartHeaderProps } from './types'
 
 export default function CartHeader(props: CartHeaderProps) {

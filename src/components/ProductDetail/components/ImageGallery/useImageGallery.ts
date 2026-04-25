@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+
 import type { ImageGalleryProps } from './types'
 
 export function useImageGallery({ images }: Pick<ImageGalleryProps, 'images'>) {

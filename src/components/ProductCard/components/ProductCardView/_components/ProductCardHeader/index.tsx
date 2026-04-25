@@ -1,4 +1,5 @@
 import Link from 'next/link'
+
 import type { ProductCardHeaderProps } from './types'
 
 export default function ProductCardHeader(props: ProductCardHeaderProps) {

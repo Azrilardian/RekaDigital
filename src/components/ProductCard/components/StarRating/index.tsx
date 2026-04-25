@@ -1,5 +1,7 @@
-import { cn } from '@/lib/utils'
 import { Star } from 'lucide-react'
+
+import { cn } from '@/lib/utils'
+
 import { StarRatingProps } from './types'
 
 export default function StarRating(props: StarRatingProps) {

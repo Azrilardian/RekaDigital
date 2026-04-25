@@ -1,13 +1,15 @@
 'use client'
 
+import { Trash2 } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Trash2 } from 'lucide-react'
-import { setQuantity, removeFromCart } from '@/store/cartSlice'
-import { useAppDispatch } from '@/store/hooks'
-import type { CartItemProps } from './types'
-import { Button } from '@/components/ui/button'
+
 import QuantitySelector from '@/components/QuantitySelector'
+import { Button } from '@/components/ui/button'
+import { removeFromCart, setQuantity } from '@/store/cartSlice'
+import { useAppDispatch } from '@/store/hooks'
+
+import type { CartItemProps } from './types'
 
 export default function CartItem(props: CartItemProps) {
   const { item } = props

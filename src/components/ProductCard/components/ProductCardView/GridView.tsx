@@ -1,10 +1,12 @@
-import Link from 'next/link'
 import Image from 'next/image'
+import Link from 'next/link'
+
 import { Badge } from '@/components/ui/badge'
+
 import StarRating from '../StarRating'
-import ProductCardHeader from './_components/ProductCardHeader'
 import ProductCardDescription from './_components/ProductCardDescription'
 import ProductCardFooter from './_components/ProductCardFooter'
+import ProductCardHeader from './_components/ProductCardHeader'
 import type { ProductCardViewProps } from './types'
 
 export default function GridView(props: ProductCardViewProps) {

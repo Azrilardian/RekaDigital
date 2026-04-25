@@ -1,11 +1,12 @@
 'use client'
 
 import FilterSidebar from '@/components/FilterSidebar'
-import SortAndView from './components/SortAndView'
-import ProductGrid from './components/ProductGrid'
-import LoadMoreButton from './components/LoadMoreButton'
-import FilterSheet from './components/FilterSheet'
+
 import FiltersButton from './components/FiltersButton'
+import FilterSheet from './components/FilterSheet'
+import LoadMoreButton from './components/LoadMoreButton'
+import ProductGrid from './components/ProductGrid'
+import SortAndView from './components/SortAndView'
 import { useCatalogView } from './useCatalogView'
 
 export default function CatalogView() {

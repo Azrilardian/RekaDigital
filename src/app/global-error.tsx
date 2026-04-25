@@ -22,7 +22,7 @@ export default function GlobalError({
               Something went wrong
             </h1>
             <p className='text-slate-blue mb-8 text-lg'>
-              An unexpected error occurred. Please try again.
+              {error?.message ?? 'An unexpected error occurred'}
             </p>
             <button
               onClick={reset}

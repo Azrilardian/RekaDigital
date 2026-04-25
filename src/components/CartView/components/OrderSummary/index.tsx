@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
+
 import type { OrderSummaryProps } from './types'
 
 export default function OrderSummary(props: OrderSummaryProps) {

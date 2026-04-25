@@ -1,13 +1,13 @@
 'use client'
 
-import { useProductDetail } from './useProductDetail'
-import { useRelatedProducts } from './useRelatedProducts'
-import type { ProductDetailProps } from './types'
 import Breadcrumb from './components/Breadcrumb'
 import ImageGallery from './components/ImageGallery'
+import ProductDetailSkeleton from './components/ProductDetailSkeleton'
 import ProductInfo from './components/ProductInfo'
 import RelatedProducts from './components/RelatedProducts'
-import ProductDetailSkeleton from './components/ProductDetailSkeleton'
+import type { ProductDetailProps } from './types'
+import { useProductDetail } from './useProductDetail'
+import { useRelatedProducts } from './useRelatedProducts'
 
 export default function ProductDetail(props: ProductDetailProps) {
   const { id } = props

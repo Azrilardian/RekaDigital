@@ -1,5 +1,5 @@
-import AccordionSection from '../../../AccordionSection'
 import type { ProductMetaProps } from './types'
+import AccordionSection from '../../../AccordionSection'
 
 export default function ProductMeta(props: ProductMetaProps) {
   const { sku, vin, location } = props

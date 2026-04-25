@@ -1,12 +1,14 @@
 'use client'
 
 import { useState } from 'react'
+
 import { useQuery } from '@tanstack/react-query'
-import { useAppDispatch, useAppSelector } from '@/store/hooks'
-import { addToCart } from '@/store/cartSlice'
+
+import { FEEDBACK_TIMINGS } from '@/config/constants'
 import { fetchProduct } from '@/lib/api'
 import { queryKeys } from '@/lib/queryKeys'
-import { FEEDBACK_TIMINGS } from '@/config/ui-constants'
+import { addToCart } from '@/store/cartSlice'
+import { useAppDispatch, useAppSelector } from '@/store/hooks'
 
 export function useProductDetail(id: number) {
   const dispatch = useAppDispatch()

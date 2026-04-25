@@ -1,11 +1,13 @@
+import { ReactNode } from 'react'
+
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+
 import './globals.css'
-import Providers from '@/components/Providers'
 import AnnouncementBar from '@/components/AnnouncementBar'
-import Navbar from '@/components/Navbar'
 import AppFooter from '@/components/AppFooter'
-import { ReactNode } from 'react'
+import Navbar from '@/components/Navbar'
+import Providers from '@/components/Providers'
 
 const inter = Inter({
   variable: '--font-inter',

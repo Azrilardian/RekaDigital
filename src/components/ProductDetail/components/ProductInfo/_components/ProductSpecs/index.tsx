@@ -1,4 +1,5 @@
 import { Badge } from '@/components/ui/badge'
+
 import type { ProductSpecsProps } from './types'
 
 export default function ProductSpecs(props: ProductSpecsProps) {

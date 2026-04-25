@@ -1,5 +1,6 @@
+import { ArrowLeft, ShoppingBag } from 'lucide-react'
 import Link from 'next/link'
-import { ShoppingBag, ArrowLeft } from 'lucide-react'
+
 import { Button } from '@/components/ui/button'
 
 export default function EmptyCart() {

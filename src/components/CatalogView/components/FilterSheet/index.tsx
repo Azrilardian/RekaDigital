@@ -1,16 +1,17 @@
 'use client'
 
+import CategoryList from '@/components/FilterSidebar/components/CategoryList'
+import CategorySkeleton from '@/components/FilterSidebar/components/CategorySkeleton'
+import PriceRangeList from '@/components/FilterSidebar/components/PriceRangeList'
 import { Button } from '@/components/ui/button'
 import {
   Sheet,
   SheetContent,
+  SheetFooter,
   SheetHeader,
-  SheetTitle,
-  SheetFooter
+  SheetTitle
 } from '@/components/ui/sheet'
-import CategoryList from '@/components/FilterSidebar/components/CategoryList'
-import PriceRangeList from '@/components/FilterSidebar/components/PriceRangeList'
-import CategorySkeleton from '@/components/FilterSidebar/components/CategorySkeleton'
+
 import type { FilterSheetProps } from './types'
 
 export default function FilterSheet(props: FilterSheetProps) {

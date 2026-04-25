@@ -1,10 +1,12 @@
 'use client'
 
 import { useState } from 'react'
-import { useAppDispatch, useAppSelector } from '@/store/hooks'
+
+import { FEEDBACK_TIMINGS } from '@/config/constants'
 import { clearCart } from '@/store/cartSlice'
+import { useAppDispatch, useAppSelector } from '@/store/hooks'
+
 import { calculateCartTotals } from './utils'
-import { FEEDBACK_TIMINGS } from '@/config/ui-constants'
 
 export function useCartView() {
   const dispatch = useAppDispatch()

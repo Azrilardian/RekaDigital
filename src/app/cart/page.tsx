@@ -1,5 +1,6 @@
-import CartView from '@/components/CartView'
 import type { Metadata } from 'next'
+
+import CartView from '@/components/CartView'
 
 export const metadata: Metadata = {
   title: 'Your Cart — ShopCatalog',

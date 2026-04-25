@@ -1,6 +1,7 @@
-import type { Product } from '@/types'
-import type { FilteredProductsParams } from './types'
 import { PRICE_RANGES } from '@/config/catalog-filters'
+import type { Product } from '@/types'
+
+import type { FilteredProductsParams } from './types'
 
 export function filterAndSortProducts({
   products,

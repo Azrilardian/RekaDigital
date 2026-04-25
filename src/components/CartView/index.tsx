@@ -1,12 +1,12 @@
 'use client'
 
-import { useCartView } from './useCartView'
+import CartHeader from './components/CartHeader'
+import CartItem from './components/CartItem'
 import CartSkeleton from './components/CartSkeleton'
 import CheckoutSuccess from './components/CheckoutSuccess'
 import EmptyCart from './components/EmptyCart'
-import CartHeader from './components/CartHeader'
-import CartItem from './components/CartItem'
 import OrderSummary from './components/OrderSummary'
+import { useCartView } from './useCartView'
 
 export default function CartView() {
   const {

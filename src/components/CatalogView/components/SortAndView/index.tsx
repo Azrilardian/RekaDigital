@@ -1,6 +1,7 @@
 'use client'
 
 import { ChevronDown, Grid2X2, Grid3X3, List } from 'lucide-react'
+
 import {
   Select,
   SelectContent,
@@ -9,8 +10,9 @@ import {
   SelectValue
 } from '@/components/ui/select'
 import { SORT_OPTIONS } from '@/config/catalog-filters'
-import type { SortOption, ViewMode } from '../../types'
+
 import type { SortAndViewProps } from './types'
+import type { SortOption, ViewMode } from '../../types'
 
 export default function SortAndView(props: SortAndViewProps) {
   const { sort, onSortChange, viewMode, onViewModeChange } = props

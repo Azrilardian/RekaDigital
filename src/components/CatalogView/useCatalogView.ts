@@ -1,12 +1,15 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useMemo, useState } from 'react'
+
 import { useQuery } from '@tanstack/react-query'
-import { fetchProducts, fetchCategories } from '@/lib/api'
+
+import { CATALOG_CONFIG } from '@/config/constants'
+import { fetchCategories, fetchProducts } from '@/lib/api'
 import { queryKeys } from '@/lib/queryKeys'
-import { filterAndSortProducts } from './utils'
-import { CATALOG_CONFIG } from '@/config/ui-constants'
+
 import type { SortOption, ViewMode } from './types'
+import { filterAndSortProducts } from './utils'
 
 export function useCatalogView() {
   const [search, setSearch] = useState('')

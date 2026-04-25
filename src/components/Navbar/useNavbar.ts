@@ -1,6 +1,7 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
+
 import { useAppSelector } from '@/store/hooks'
 
 export function useNavbar() {

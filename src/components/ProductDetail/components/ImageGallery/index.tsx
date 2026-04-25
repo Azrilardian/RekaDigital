@@ -1,10 +1,11 @@
 'use client'
 
 import Image from 'next/image'
-import NavigationButton from './_components/NavigationButton'
+
 import ImageCounter from './_components/ImageCounter'
-import { useImageGallery } from './useImageGallery'
+import NavigationButton from './_components/NavigationButton'
 import type { ImageGalleryProps } from './types'
+import { useImageGallery } from './useImageGallery'
 
 export default function ImageGallery(props: ImageGalleryProps) {
   const { title, images } = props

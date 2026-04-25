@@ -1,5 +1,5 @@
+import { AtSign, Rss, Share2 } from 'lucide-react'
 import Link from 'next/link'
-import { Share2, AtSign, Rss } from 'lucide-react'
 
 const NAV_LINKS = [
   { href: '/', label: 'Home' },

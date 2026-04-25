@@ -1,9 +1,10 @@
 'use client'
 
 import Link from 'next/link'
-import { useNavbar } from './useNavbar'
-import NavLinks from './components/NavLinks'
+
 import NavActions from './components/NavActions'
+import NavLinks from './components/NavLinks'
+import { useNavbar } from './useNavbar'
 
 export default function Navbar() {
   const { pathname, itemCount } = useNavbar()

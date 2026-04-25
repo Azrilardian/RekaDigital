@@ -1,9 +1,10 @@
 'use client'
 
 import { useQuery } from '@tanstack/react-query'
+
+import { CACHE_CONFIG } from '@/config/constants'
 import { fetchProducts } from '@/lib/api'
 import { queryKeys } from '@/lib/queryKeys'
-import { CACHE_CONFIG } from '@/config/ui-constants'
 import type { Product } from '@/types'
 
 export function useRelatedProducts(

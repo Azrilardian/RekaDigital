@@ -1,4 +1,5 @@
 import { ChangeEvent } from 'react'
+
 import type { QuantitySelectorProps } from './types'
 
 export function useQuantitySelector({

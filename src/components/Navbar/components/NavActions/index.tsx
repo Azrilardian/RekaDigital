@@ -1,5 +1,6 @@
+import { Heart, Menu, Search, User } from 'lucide-react'
 import Link from 'next/link'
-import { Search, User, Menu, Heart } from 'lucide-react'
+
 import type { NavActionsProps } from './types'
 
 const iconButtonClass =

@@ -1,7 +1,9 @@
 'use client'
 
 import { useState } from 'react'
+
 import { ChevronRight } from 'lucide-react'
+
 import type { AccordionSectionProps } from './types'
 
 export default function AccordionSection(props: AccordionSectionProps) {

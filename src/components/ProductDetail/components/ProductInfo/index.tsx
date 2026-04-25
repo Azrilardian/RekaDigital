@@ -1,12 +1,14 @@
 'use client'
 
 import { useState } from 'react'
-import PriceDisplay from './_components/PriceDisplay'
-import ProductSpecs from './_components/ProductSpecs'
+
 import QuantitySelector from '@/components/QuantitySelector'
-import WishlistButton from './_components/WishlistButton'
+
 import AddToCartButton from './_components/AddToCartButton'
+import PriceDisplay from './_components/PriceDisplay'
 import ProductMeta from './_components/ProductMeta'
+import ProductSpecs from './_components/ProductSpecs'
+import WishlistButton from './_components/WishlistButton'
 import type { ProductInfoProps } from './types'
 
 export default function ProductInfo(props: ProductInfoProps) {

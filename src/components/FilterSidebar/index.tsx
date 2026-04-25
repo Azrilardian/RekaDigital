@@ -1,8 +1,9 @@
 'use client'
 
 import { Funnel } from 'lucide-react'
-import CategorySkeleton from './components/CategorySkeleton'
+
 import CategoryList from './components/CategoryList'
+import CategorySkeleton from './components/CategorySkeleton'
 import PriceRangeList from './components/PriceRangeList'
 import type { FilterSidebarProps } from './types'
 

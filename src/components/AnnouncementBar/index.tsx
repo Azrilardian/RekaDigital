@@ -1,8 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-import Link from 'next/link'
+
 import { ChevronRight, X } from 'lucide-react'
+import Link from 'next/link'
 
 export default function AnnouncementBar() {
   const [dismissed, setDismissed] = useState(false)

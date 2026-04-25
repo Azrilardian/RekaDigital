@@ -1,7 +1,8 @@
 import ProductCard from '@/components/ProductCard'
+import ProductCardSkeleton from '@/components/ProductCard/components/ProductCardSkeleton'
+
 import type { ProductGridProps } from './types'
 import { getGridClassName } from './utils'
-import ProductCardSkeleton from '@/components/ProductCard/components/ProductCardSkeleton'
 
 const EmptyState = () => (
   <div className='text-foreground py-24 text-center'>

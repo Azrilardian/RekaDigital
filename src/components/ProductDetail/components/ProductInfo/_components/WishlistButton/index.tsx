@@ -1,4 +1,5 @@
 import { Heart } from 'lucide-react'
+
 import type { WishlistButtonProps } from './types'
 
 export default function WishlistButton(props: WishlistButtonProps) {
