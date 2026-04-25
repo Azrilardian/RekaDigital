@@ -3,16 +3,26 @@
  * Centralized API endpoints and settings
  */
 export const API_CONFIG = {
-  BASE_URL: process.env.NEXT_PUBLIC_API_URL || 'https://fakestoreapi.com',
   REVALIDATE_TIME: 300, // 5 minutes in seconds
   IMAGE_HOSTNAME: 'fakestoreapi.com'
 } as const
 
+export const CATALOG_CONFIG = {
+  PAGE_SIZE: 9,
+  INITIAL_VISIBLE_COUNT: 9
+} as const
+
+export const FEEDBACK_TIMINGS = {
+  CART_ADDED: 2000, // Success message duration after adding to cart
+  CHECKOUT_SUCCESS: 3000 // Success message duration after checkout
+} as const
+
 /**
- * API Endpoints
+ * React Query cache configuration
  */
-export const API_ENDPOINTS = {
-  PRODUCTS: `${API_CONFIG.BASE_URL}/products`,
-  CATEGORIES: `${API_CONFIG.BASE_URL}/products/categories`,
-  product: (id: number) => `${API_CONFIG.BASE_URL}/products/${id}`
+export const CACHE_CONFIG = {
+  STALE_TIME: 60_000, // 1 minute
+  GC_TIME: 5 * 60_000, // 5 minutes
+  RETRY_COUNT: 2,
+  REFETCH_ON_WINDOW_FOCUS: false
 } as const

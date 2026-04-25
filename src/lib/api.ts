@@ -1,29 +1,31 @@
+import { productApi } from '@/services/api/product-api'
 import type { Product } from '@/types'
-import { API_CONFIG, API_ENDPOINTS } from '@/config/constants'
+
+function toFetchError(message: string, err: unknown): Error {
+  if (err instanceof Error) return err
+  return new Error(message)
+}
 
 export async function fetchProducts(): Promise<Product[]> {
-  const res = await fetch(API_ENDPOINTS.PRODUCTS, {
-    next: { revalidate: API_CONFIG.REVALIDATE_TIME }
-  })
-
-  if (!res.ok) throw new Error('Failed to fetch products')
-  return res.json()
+  try {
+    return await productApi.getProducts()
+  } catch (err) {
+    throw toFetchError('Failed to fetch products', err)
+  }
 }
 
 export async function fetchProduct(id: number): Promise<Product> {
-  const res = await fetch(API_ENDPOINTS.product(id), {
-    next: { revalidate: API_CONFIG.REVALIDATE_TIME }
-  })
-
-  if (!res.ok) throw new Error(`Failed to fetch product ${id}`)
-  return res.json()
+  try {
+    return await productApi.getProduct(id)
+  } catch (err) {
+    throw toFetchError(`Failed to fetch product ${id}`, err)
+  }
 }
 
 export async function fetchCategories(): Promise<string[]> {
-  const res = await fetch(API_ENDPOINTS.CATEGORIES, {
-    next: { revalidate: API_CONFIG.REVALIDATE_TIME }
-  })
-
-  if (!res.ok) throw new Error('Failed to fetch categories')
-  return res.json()
+  try {
+    return await productApi.getCategories()
+  } catch (err) {
+    throw toFetchError('Failed to fetch categories', err)
+  }
 }
