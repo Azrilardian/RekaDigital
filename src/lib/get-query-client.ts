@@ -10,7 +10,8 @@ export function makeQueryClient() {
         gcTime: CACHE_CONFIG.GC_TIME,
         retry: CACHE_CONFIG.RETRY_COUNT,
         refetchOnWindowFocus: CACHE_CONFIG.REFETCH_ON_WINDOW_FOCUS,
-        throwOnError: false
+        throwOnError: false,
+        retryDelay: CACHE_CONFIG.RETRY_DELAY
       }
     }
   })

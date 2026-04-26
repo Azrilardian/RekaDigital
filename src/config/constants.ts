@@ -23,6 +23,7 @@ export const FEEDBACK_TIMINGS = {
 export const CACHE_CONFIG = {
   STALE_TIME: 60_000, // 1 minute
   GC_TIME: 5 * 60_000, // 5 minutes
-  RETRY_COUNT: 2,
-  REFETCH_ON_WINDOW_FOCUS: false
+  RETRY_COUNT: 0,
+  REFETCH_ON_WINDOW_FOCUS: false,
+  RETRY_DELAY: 3000
 } as const
