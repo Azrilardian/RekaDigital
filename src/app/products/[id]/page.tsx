@@ -1,4 +1,5 @@
 import { HydrationBoundary, dehydrate } from '@tanstack/react-query'
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import ProductDetail from '@/components/ProductDetail'
@@ -12,14 +13,23 @@ interface Props {
   params: Promise<{ id: string }>
 }
 
-export async function generateMetadata({ params }: Props) {
-  const { id } = await params
-  const numId = Number(id)
+function getProductId(value: string): number | null {
+  const productId = Number(value)
+  if (Number.isNaN(productId) || productId < 1) {
+    return null
+  }
 
-  if (isNaN(numId)) return { title: 'Product Not Found' }
+  return productId
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = await params
+  const productId = getProductId(id)
+
+  if (productId === null) return { title: 'Product Not Found' }
 
   try {
-    const res = await fetch(`${API_BASE_URL}/products/${numId}`, {
+    const res = await fetch(`${API_BASE_URL}/products/${productId}`, {
       next: { revalidate: API_CONFIG.REVALIDATE_TIME }
     })
 
@@ -37,22 +47,22 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function ProductPage({ params }: Props) {
   const { id } = await params
-  const numId = Number(id)
+  const productId = getProductId(id)
+
+  if (productId === null) {
+    notFound()
+  }
 
   const queryClient = getQueryClient()
 
   await queryClient.prefetchQuery({
-    queryKey: queryKeys.products.detail(numId),
-    queryFn: () => fetchProduct(numId)
+    queryKey: queryKeys.products.detail(productId),
+    queryFn: () => fetchProduct(productId)
   })
-
-  if (isNaN(numId) || numId < 1) {
-    notFound()
-  }
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <ProductDetail id={numId} />
+      <ProductDetail id={productId} />
     </HydrationBoundary>
   )
 }
