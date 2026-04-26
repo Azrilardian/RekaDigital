@@ -11,34 +11,17 @@ import { useCatalogView } from './useCatalogView'
 
 export default function CatalogView() {
   const {
-    activeCategory,
-    handleCategoryChange,
-    sort,
-    setSort,
-    selectedPriceRanges,
-    handlePriceRangeChange,
-    viewMode,
-    setViewMode,
+    categoryLabel,
     visibleProducts,
-    filtered,
+    filteredProducts,
     hasMore,
     handleLoadMore,
-    categories,
     productsLoading,
-    categoriesLoading,
     isFilterSheetOpen,
     setIsFilterSheetOpen,
     toggleFilterSheet,
     handleApplyFilters
   } = useCatalogView()
-
-  const transformedCategoryLabel =
-    activeCategory.charAt(0).toUpperCase() + activeCategory.slice(1)
-
-  const categoryLabel =
-    activeCategory === 'all'
-      ? 'All Products'
-      : `${transformedCategoryLabel} Products`
 
   return (
     <div className='mx-auto mb-24 mt-8 max-w-[1440px] px-4 sm:mt-12 sm:px-6 lg:px-8'>
@@ -46,14 +29,7 @@ export default function CatalogView() {
 
       <div className='flex items-start gap-8'>
         <div className='hidden lg:block'>
-          <FilterSidebar
-            categories={categories}
-            activeCategory={activeCategory}
-            onCategoryChange={handleCategoryChange}
-            selectedPriceRanges={selectedPriceRanges}
-            onPriceRangeChange={handlePriceRangeChange}
-            isLoading={categoriesLoading}
-          />
+          <FilterSidebar />
         </div>
 
         <div className='min-w-0 flex-1'>
@@ -62,19 +38,12 @@ export default function CatalogView() {
               {productsLoading ? 'Loading…' : categoryLabel}
             </h2>
 
-            <SortAndView
-              sort={sort}
-              onSortChange={setSort}
-              viewMode={viewMode}
-              onViewModeChange={setViewMode}
-            />
+            <SortAndView />
           </div>
 
           <ProductGrid
             products={visibleProducts}
-            viewMode={viewMode}
-            isLoading={productsLoading}
-            isEmpty={filtered.length === 0}
+            isEmpty={filteredProducts.length === 0}
           />
 
           {!productsLoading && hasMore && (
@@ -86,12 +55,6 @@ export default function CatalogView() {
       <FilterSheet
         open={isFilterSheetOpen}
         onOpenChange={setIsFilterSheetOpen}
-        categories={categories}
-        activeCategory={activeCategory}
-        onCategoryChange={handleCategoryChange}
-        selectedPriceRanges={selectedPriceRanges}
-        onPriceRangeChange={handlePriceRangeChange}
-        isLoading={categoriesLoading}
         onApplyFilters={handleApplyFilters}
       />
     </div>

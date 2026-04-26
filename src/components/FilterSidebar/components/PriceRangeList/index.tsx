@@ -3,34 +3,38 @@
 import { Checkbox } from '@/components/ui/checkbox'
 import { PRICE_RANGES } from '@/config/catalog-filters'
 
-import type { PriceRangeListProps } from './types'
+import { usePriceRangeList } from './usePriceRangeList'
 
-export default function PriceRangeList(props: PriceRangeListProps) {
-  const { selectedPriceRanges, onPriceRangeChange } = props
+export default function PriceRangeList() {
+  const { priceRange, updatePriceRangeParam } = usePriceRangeList()
 
   return (
-    <ul className='space-y-3'>
-      {PRICE_RANGES.map((range) => {
-        const checked = selectedPriceRanges.includes(range.id)
+    <>
+      <p className='text-foreground mb-4 text-sm font-semibold uppercase leading-5 tracking-[0.2px]'>
+        Price Range
+      </p>
 
-        return (
-          <li key={range.id} className='flex items-center justify-between'>
-            <label
-              htmlFor={`price-${range.id}`}
-              className='cursor-pointer select-none text-sm font-medium text-[#475569]'
-            >
-              {range.label}
-            </label>
-            <Checkbox
-              id={`price-${range.id}`}
-              checked={checked}
-              onCheckedChange={(val) =>
-                onPriceRangeChange(range.id, Boolean(val))
-              }
-            />
-          </li>
-        )
-      })}
-    </ul>
+      <ul className='space-y-3'>
+        {PRICE_RANGES.map((range) => {
+          const checked = priceRange.includes(range.id)
+
+          return (
+            <li key={range.id} className='flex items-center justify-between'>
+              <label
+                htmlFor={`price-${range.id}`}
+                className='cursor-pointer select-none text-sm font-medium text-[#475569]'
+              >
+                {range.label}
+              </label>
+              <Checkbox
+                id={`price-${range.id}`}
+                checked={checked}
+                onCheckedChange={() => updatePriceRangeParam(range.id)}
+              />
+            </li>
+          )
+        })}
+      </ul>
+    </>
   )
 }

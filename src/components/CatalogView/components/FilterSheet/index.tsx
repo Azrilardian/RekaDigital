@@ -1,7 +1,6 @@
 'use client'
 
 import CategoryList from '@/components/FilterSidebar/components/CategoryList'
-import CategorySkeleton from '@/components/FilterSidebar/components/CategorySkeleton'
 import PriceRangeList from '@/components/FilterSidebar/components/PriceRangeList'
 import { Button } from '@/components/ui/button'
 import {
@@ -13,19 +12,12 @@ import {
 } from '@/components/ui/sheet'
 
 import type { FilterSheetProps } from './types'
+import { useFilterSheet } from './useFilterSheet'
 
 export default function FilterSheet(props: FilterSheetProps) {
-  const {
-    open,
-    onOpenChange,
-    categories,
-    activeCategory,
-    onCategoryChange,
-    selectedPriceRanges,
-    onPriceRangeChange,
-    isLoading,
-    onApplyFilters
-  } = props
+  const { open, onOpenChange, onApplyFilters } = props
+
+  const { handleClearAll } = useFilterSheet()
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
@@ -38,39 +30,18 @@ export default function FilterSheet(props: FilterSheetProps) {
 
         <div className='mt-6 space-y-6'>
           <section>
-            <p className='text-foreground mb-4 text-sm font-semibold uppercase leading-5 tracking-[0.2px]'>
-              Category
-            </p>
-
-            {isLoading ? (
-              <CategorySkeleton />
-            ) : (
-              <CategoryList
-                categories={categories}
-                activeCategory={activeCategory}
-                onCategoryChange={onCategoryChange}
-              />
-            )}
+            <CategoryList />
           </section>
 
           <section>
-            <p className='text-foreground mb-4 text-sm font-semibold uppercase leading-5 tracking-[0.2px]'>
-              Price Range
-            </p>
-            <PriceRangeList
-              selectedPriceRanges={selectedPriceRanges}
-              onPriceRangeChange={onPriceRangeChange}
-            />
+            <PriceRangeList />
           </section>
         </div>
 
         <SheetFooter className='mt-8 flex-row gap-3'>
           <Button
             variant='outline'
-            onClick={() => {
-              onCategoryChange('all')
-              selectedPriceRanges.forEach((id) => onPriceRangeChange(id, false))
-            }}
+            onClick={handleClearAll}
             className='flex-1 rounded-[10px] border-2'
           >
             Clear All

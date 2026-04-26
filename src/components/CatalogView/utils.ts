@@ -9,32 +9,19 @@ export function filterAndSortProducts({
 }: FilteredProductsParams): Product[] {
   let result = [...products]
 
-  if (filters.activeCategory !== 'all') {
-    result = result.filter((p) => p.category === filters.activeCategory)
+  if (filters.category !== 'all') {
+    result = result.filter((p) => p.category === filters.category)
   }
 
-  if (filters.search.trim()) {
-    const q = filters.search.toLowerCase()
-    result = result.filter(
-      (p) =>
-        p.title.toLowerCase().includes(q) ||
-        p.description.toLowerCase().includes(q) ||
-        p.category.toLowerCase().includes(q)
-    )
-  }
+  const activePriceRanges = filters.priceRange
 
-  const activePriceRanges = filters.selectedPriceRanges.filter(
-    (id) => id !== 'all'
-  )
-
-  if (activePriceRanges.length > 0) {
+  if (activePriceRanges !== 'all') {
     result = result.filter((p) => {
-      return activePriceRanges.some((rangeId) => {
-        const range = PRICE_RANGES.find((r) => r.id === rangeId)
-        if (!range) return false
-        if (range.max === null) return p.price >= range.min
-        return p.price >= range.min && p.price < range.max
-      })
+      const range = PRICE_RANGES.find((r) => r.id === activePriceRanges)
+      if (!range) return false
+
+      if (range.max === null) return p.price >= range.min
+      return p.price >= range.min && p.price < range.max
     })
   }
 

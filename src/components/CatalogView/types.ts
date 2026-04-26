@@ -9,10 +9,9 @@ export interface SortOptionItem {
 }
 
 export interface CatalogFilters {
-  search: string
-  activeCategory: string
+  category: string
   sort: SortOption
-  selectedPriceRanges: string[]
+  priceRange: string
 }
 
 export interface FilteredProductsParams {

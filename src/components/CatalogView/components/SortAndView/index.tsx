@@ -11,17 +11,18 @@ import {
 } from '@/components/ui/select'
 import { SORT_OPTIONS } from '@/config/catalog-filters'
 
-import type { SortAndViewProps } from './types'
-import type { SortOption, ViewMode } from '../../types'
+import { useSortAndView } from './useSortAndView'
+import type { ViewMode } from '../../types'
 
-export default function SortAndView(props: SortAndViewProps) {
-  const { sort, onSortChange, viewMode, onViewModeChange } = props
+const viewModes = [
+  { mode: 'grid-3' as ViewMode, icon: Grid3X3, label: '3 column grid' },
+  { mode: 'grid-2' as ViewMode, icon: Grid2X2, label: '2 column grid' },
+  { mode: 'list' as ViewMode, icon: List, label: 'List view' }
+]
 
-  const viewModes = [
-    { mode: 'grid-3' as ViewMode, icon: Grid3X3, label: '3 column grid' },
-    { mode: 'grid-2' as ViewMode, icon: Grid2X2, label: '2 column grid' },
-    { mode: 'list' as ViewMode, icon: List, label: 'List view' }
-  ]
+export default function SortAndView() {
+  const { sort, viewMode, updateSortParam, updateViewModeParam } =
+    useSortAndView()
 
   return (
     <div className='flex items-center gap-3 sm:gap-6'>
@@ -29,10 +30,7 @@ export default function SortAndView(props: SortAndViewProps) {
         <span className='text-foreground hidden text-sm font-medium sm:inline'>
           Sort by
         </span>
-        <Select
-          value={sort}
-          onValueChange={(val) => onSortChange(val as SortOption)}
-        >
+        <Select value={sort} onValueChange={updateSortParam}>
           <SelectTrigger className='h-auto w-auto cursor-pointer border-none bg-transparent p-0 text-sm font-normal shadow-none focus:ring-0 focus:ring-offset-0 [&>svg]:hidden'>
             <div className='flex items-center gap-1 sm:gap-2'>
               <SelectValue />
@@ -53,7 +51,7 @@ export default function SortAndView(props: SortAndViewProps) {
         {viewModes.map(({ mode, icon: Icon, label }) => (
           <button
             key={mode}
-            onClick={() => onViewModeChange(mode)}
+            onClick={() => updateViewModeParam(mode)}
             aria-label={label}
             className={`flex h-8 w-8 cursor-pointer items-center justify-center rounded-md transition-all sm:h-9 sm:w-9 ${
               mode === 'list' ? 'hidden sm:flex' : ''

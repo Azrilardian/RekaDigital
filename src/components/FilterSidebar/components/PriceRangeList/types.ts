@@ -1,4 +1,4 @@
 export interface PriceRangeListProps {
-  selectedPriceRanges: string[]
+  priceRange: string
   onPriceRangeChange: (rangeId: string, checked: boolean) => void
 }

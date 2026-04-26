@@ -1,6 +1,6 @@
-import { ProductGridProps } from './types'
+import { ViewMode } from '../../types'
 
-export const getGridClassName = (viewMode: ProductGridProps['viewMode']) => {
+export const getGridClassName = (viewMode: ViewMode) => {
   switch (viewMode) {
     case 'grid-3':
       return 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'
