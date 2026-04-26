@@ -134,7 +134,10 @@ export class ApiCore {
   protected async processResult(response: ApiResponse<any>) {
     if (!response.ok) {
       const problem = getGeneralApiProblem(response)
-      if (problem) return Promise.reject(problem)
+
+      if (problem !== null) {
+        return Promise.reject(problem)
+      }
     }
 
     return Promise.resolve(response)

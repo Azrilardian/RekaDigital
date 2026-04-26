@@ -11,59 +11,68 @@ export enum ApiErrorKind {
   UNKNOWN = 'unknown',
   BAD_DATA = 'bad-data',
   FOUND = 'found',
-  CONFLICT = 'conflict'
+  CONFLICT = 'conflict',
+  CANCELLED = 'cancelled'
+}
+
+export type ApiProblemErrors = Record<string, unknown[]> | unknown
+
+export type ApiProblemBase = {
+  kind: ApiErrorKind
+  status?: number
+  message?: string
+  errors?: ApiProblemErrors
+  raw?: unknown
+  temporary?: true
 }
 
 export type GeneralApiProblem =
-  /**
-   * Times up.
-   */
-  | { kind: ApiErrorKind.TIMEOUT; temporary: true }
-  /**
-   * Cannot connect to the server for some reason.
-   */
-  | { kind: ApiErrorKind.CONNECTION; temporary: true }
-  /**
-   * The server experienced a problem. Any 5xx error.
-   */
-  | { kind: ApiErrorKind.SERVER }
-  /**
-   * We're not allowed because we haven't identified ourself. This is 401.
-   */
-  | { kind: ApiErrorKind.UNAUTHORIZED }
-  /**
-   * We don't have access to perform that request. This is 403.
-   */
-  | { kind: ApiErrorKind.FORBIDDEN; errors?: unknown }
-  /**
-   * Unable to find that resource.  This is a 404.
-   */
-  | { kind: ApiErrorKind.NOT_FOUND }
-  /**
-   * Unable to find that resource.  This is a 410.
-   */
-  | { kind: ApiErrorKind.GONE }
-  /**
-   * Data already exists.  This is a 409.
-   */
-  | { kind: ApiErrorKind.CONFLICT }
-  /**
-   * The data we sent is not valid.  This is a 422.
-   */
-  | { kind: ApiErrorKind.UNPROCESSABLE; errors?: unknown }
-  /**
-   * All other 4xx series errors.
-   */
-  | { kind: ApiErrorKind.REJECTED }
-  /**
-   * No an error but a temporary redirect.  This is a 302.
-   */
-  | { kind: ApiErrorKind.FOUND; temporary: true }
-  /**
-   * Something truly unexpected happened. Most likely can try again. This is a catch all.
-   */
-  | { kind: ApiErrorKind.UNKNOWN; temporary: true }
-  /**
-   * The data we received is not in the expected format.
-   */
-  | { kind: ApiErrorKind.BAD_DATA; errors?: Record<string, object[]> }
+  | (ApiProblemBase & { kind: ApiErrorKind.TIMEOUT; temporary: true })
+  | (ApiProblemBase & { kind: ApiErrorKind.CONNECTION; temporary: true })
+  | (ApiProblemBase & { kind: ApiErrorKind.SERVER })
+  | (ApiProblemBase & { kind: ApiErrorKind.UNAUTHORIZED })
+  | (ApiProblemBase & {
+      kind: ApiErrorKind.FORBIDDEN
+      errors?: ApiProblemErrors
+    })
+  | (ApiProblemBase & { kind: ApiErrorKind.NOT_FOUND })
+  | (ApiProblemBase & { kind: ApiErrorKind.GONE })
+  | (ApiProblemBase & { kind: ApiErrorKind.CONFLICT })
+  | (ApiProblemBase & {
+      kind: ApiErrorKind.UNPROCESSABLE
+      errors?: ApiProblemErrors
+    })
+  | (ApiProblemBase & { kind: ApiErrorKind.REJECTED })
+  | (ApiProblemBase & { kind: ApiErrorKind.FOUND; temporary: true })
+  | (ApiProblemBase & { kind: ApiErrorKind.UNKNOWN; temporary: true })
+  | (ApiProblemBase & {
+      kind: ApiErrorKind.BAD_DATA
+      errors?: ApiProblemErrors
+    })
+  | (ApiProblemBase & { kind: ApiErrorKind.CANCELLED; temporary: true })
+
+export function isGeneralApiProblem(
+  value: unknown
+): value is GeneralApiProblem {
+  if (typeof value !== 'object' || value === null) {
+    return false
+  }
+
+  const kind = (value as { kind?: unknown }).kind
+  return (
+    typeof kind === 'string' &&
+    Object.values(ApiErrorKind).includes(kind as ApiErrorKind)
+  )
+}
+
+export type ProblemMapperInput = {
+  response: {
+    status?: number
+    data?: unknown
+    problem?: string | null
+  }
+}
+
+export type ProblemMapper = (
+  input: ProblemMapperInput
+) => GeneralApiProblem | null
