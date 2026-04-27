@@ -12,9 +12,9 @@ if (IS_PROD && SENTRY_DSN) {
       Sentry.browserTracingIntegration(),
       Sentry.replayIntegration()
     ],
-    tracesSampleRate: 1,
+    tracesSampleRate: 0.2,
     replaysSessionSampleRate: 0.1,
-    replaysOnErrorSampleRate: 1.0,
-    debug: true
+    replaysOnErrorSampleRate: 0.5,
+    debug: false
   })
 }

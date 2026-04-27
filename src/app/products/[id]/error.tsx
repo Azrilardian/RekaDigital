@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import Link from 'next/link'
 
 import { Button } from '@/components/ui/button'
+import { captureSentryException } from '@/utils/sentry'
 
 export default function Error({
   error,
@@ -14,7 +15,7 @@ export default function Error({
   reset: () => void
 }) {
   useEffect(() => {
-    console.error('Product page error:', error)
+    captureSentryException(error)
   }, [error])
 
   return (

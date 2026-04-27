@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import Link from 'next/link'
 
 import { Button } from '@/components/ui/button'
+import { captureSentryException } from '@/utils/sentry'
 
 export default function Error({
   error,
@@ -14,7 +15,7 @@ export default function Error({
   reset: () => void
 }) {
   useEffect(() => {
-    console.error('Application error:', error)
+    captureSentryException(error)
   }, [error])
 
   return (
@@ -24,7 +25,7 @@ export default function Error({
           Something went wrong!
         </h2>
         <p className='text-slate-blue mb-6 text-sm'>
-          {error?.message ?? 'An unexpected error occurred'}
+          An unexpected error occurred.
         </p>
         <div className='flex justify-center gap-3'>
           <Button

@@ -2,6 +2,8 @@
 
 import { useEffect } from 'react'
 
+import { captureSentryException } from '@/utils/sentry'
+
 export default function GlobalError({
   error,
   reset
@@ -10,7 +12,7 @@ export default function GlobalError({
   reset: () => void
 }) {
   useEffect(() => {
-    console.error('Global error:', error)
+    captureSentryException(error)
   }, [error])
 
   return (
@@ -22,7 +24,7 @@ export default function GlobalError({
               Something went wrong
             </h1>
             <p className='text-slate-blue mb-8 text-lg'>
-              {error?.message ?? 'An unexpected error occurred'}
+              An unexpected error occurred.
             </p>
             <button
               onClick={reset}
