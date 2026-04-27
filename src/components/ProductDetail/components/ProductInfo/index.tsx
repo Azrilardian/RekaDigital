@@ -33,10 +33,16 @@ export default function ProductInfo(props: ProductInfoProps) {
   return (
     <div className='space-y-6'>
       <div>
-        <h1 className='text-foreground mb-2 text-3xl font-semibold leading-10 tracking-[0.35px]'>
+        <h1
+          className='text-foreground mb-2 text-3xl font-semibold leading-10 tracking-[0.35px]'
+          data-testid='product-title'
+        >
           {title}
         </h1>
-        <p className='text-slate-blue text-sm leading-6 tracking-[-0.15px]'>
+        <p
+          className='text-slate-blue text-sm leading-6 tracking-[-0.15px]'
+          data-testid='product-description'
+        >
           {description}
         </p>
       </div>

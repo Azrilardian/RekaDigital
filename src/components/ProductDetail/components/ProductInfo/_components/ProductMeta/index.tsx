@@ -14,7 +14,11 @@ export default function ProductMeta(props: ProductMetaProps) {
     <div className='space-y-0'>
       <div className='border-pale-gray grid grid-cols-1 gap-4 border-t py-4'>
         {metaItems.map((item) => (
-          <div key={item.label} className='flex items-center justify-between'>
+          <div
+            key={item.label}
+            className='flex items-center justify-between'
+            data-testid={`product-meta-${item.label}`}
+          >
             <p className='text-slate-blue text-sm leading-5 tracking-[-0.15px]'>
               {item.label}:
             </p>
