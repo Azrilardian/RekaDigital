@@ -16,7 +16,7 @@
     /* Type Checking */
     "strict": true,
     "noImplicitAny": true,
-    "strictNullChecks": false,
+    "strictNullChecks": true,
     "strictFunctionTypes": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -38,5 +38,11 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules",
+    "cypress",
+    "tests/e2e",
+    "**/*.cy.ts",
+    "**/*.cy.tsx"
+  ]
 }

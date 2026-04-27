@@ -5,16 +5,16 @@ pre-commit:
     1-tsc-compilation:
       skip: true
       glob: '*.{ts,tsx}'
-      run: bun tsc-files --noEmit --pretty {staged_files}
+      run: yarn tsc-files --noEmit --pretty [staged_files]
     2-linting:
       glob: '*.{js,ts,tsx}'
-      run: bun eslint {staged_files} --fix && git add {staged_files}
+      run: npx eslint {staged_files} --fix && git add {staged_files}
     3-formatting:
       glob: '*.{js,ts,tsx,css,scss,md,json}'
-      run: bun prettier --write {staged_files} && git add {staged_files}
+      run: npx prettier --write {staged_files} && git add {staged_files}
 pre-push:
   parallel: true
   commands:
     unit-test:
       glob: '*.{ts,tsx}'
-      run: bun jest --bail --findRelatedTests --passWithNoTests {push_files}
+      run: yarn test:component
